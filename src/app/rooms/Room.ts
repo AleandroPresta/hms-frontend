@@ -4,5 +4,4 @@ export interface Room {
     price: number;
     rating: number;
     isAvailable: boolean;
-
 }
