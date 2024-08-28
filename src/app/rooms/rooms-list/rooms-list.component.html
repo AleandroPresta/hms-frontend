@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let room of roomList">
+            <td>{{room.type}}</td>
+            <td>{{room.price}}</td>
+            <td>{{room.rating}}</td>
+        </tr>
+    </tbody>
+</table>
