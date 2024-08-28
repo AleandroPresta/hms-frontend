@@ -1,7 +1,8 @@
 export interface Room {
-    id: number;
+    id?: number;
     type: string;
     price: number;
     rating: number;
     isAvailable: boolean;
+
 }
