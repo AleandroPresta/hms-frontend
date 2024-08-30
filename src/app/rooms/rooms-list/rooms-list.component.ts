@@ -23,7 +23,7 @@ export class RoomsListComponent {
       type: "double",
       price: 100,
       rating: 5,
-      isAvailable: false,
+      available: false,
     };
 
     this.roomsService.putRoom(updatedRoom).subscribe(room => {

@@ -26,7 +26,7 @@ export class RoomsComponent {
       type: "single",
       price: 100,
       rating: 5,
-      isAvailable: true,
+      available: true,
     }
 
     this.roomsService.postRoom(newRoom).subscribe(room => {
