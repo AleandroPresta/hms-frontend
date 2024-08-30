@@ -17,6 +17,7 @@ export class RoomsComponent {
   roomList: Room[] = [];
 
   ngOnInit() {
+    console.log('RoomsComponent initialized');
     this.roomsService.getRooms().subscribe(rooms => this.roomList = rooms);
   }
 
