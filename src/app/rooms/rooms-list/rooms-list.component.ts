@@ -2,11 +2,12 @@ import { Component, Input } from '@angular/core';
 import { Room } from '../Room';
 import { NgFor } from '@angular/common';
 import { RoomsService } from '../rooms.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-rooms-list',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, RouterLink],
   templateUrl: './rooms-list.component.html',
   styleUrl: './rooms-list.component.css'
 })

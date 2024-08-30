@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-room-page',
@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './room-page.component.html',
   styleUrl: './room-page.component.css'
 })
-export class RoomPageComponent {
+export class RoomPageComponent implements OnInit {
+  id?: number;
 
+  constructor() { }
+
+  ngOnInit(): void {
+    console.log('RoomPageComponent initialized');
+  }
 }
