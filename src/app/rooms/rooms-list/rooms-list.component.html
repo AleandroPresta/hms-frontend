@@ -13,7 +13,7 @@
             <td>{{room.price}}</td>
             <td>{{room.rating}}</td>
             <td>
-                <button [routerLink]="['/room', room.id]">View</button>
+                <button [routerLink]="['/room', room.id]">Visit</button>
                 <button (click)="editRoom(room)">Edit</button>
                 <button (click)="removeRoom(room.id)">Delete</button>
             </td>
