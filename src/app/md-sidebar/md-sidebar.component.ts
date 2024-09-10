@@ -13,14 +13,10 @@ import { FilterOptions } from '../filter-options/options';
 })
 export class MdSidebarComponent {
 
-  @Input() roomTypeOptions: FilterOptions[] = [
-    { name: 'Single', selected: false },
-    { name: 'Double', selected: false },
-    { name: 'King', selected: false },
-    { name: 'Queen', selected: false },
-    { name: 'Suite', selected: false },
-  ]
+  @Input() roomTypeOptions: FilterOptions[] = []
 
   @Input() priceRangeOptions: FilterOptions[] = []
+
+  @Input() ratingOptions: FilterOptions[] = []
 
 }

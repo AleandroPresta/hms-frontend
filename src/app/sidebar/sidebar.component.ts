@@ -17,4 +17,6 @@ export class SidebarComponent {
 
   @Input() priceRangeOptions: FilterOptions[] = []
 
+  @Input() ratingOptions: FilterOptions[] = []
+
 }

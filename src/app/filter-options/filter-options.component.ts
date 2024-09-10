@@ -15,6 +15,8 @@ export class FilterOptionsComponent {
 
   @Input() priceRangeOptions: FilterOptions[] = []
 
+  @Input() ratingOptions: FilterOptions[] = []
+
   toggleRoomType(i: number) {
     // Toggle the option selected state
     this.roomTypeOptions[i].selected = !this.roomTypeOptions[i].selected
@@ -25,6 +27,12 @@ export class FilterOptionsComponent {
     // Toggle the option selected state
     this.priceRangeOptions[i].selected = !this.priceRangeOptions[i].selected
     console.log(this.priceRangeOptions)
+  }
+
+  toggleRating(i: number) {
+    // Toggle the option selected state
+    this.ratingOptions[i].selected = !this.ratingOptions[i].selected
+    console.log(this.ratingOptions)
   }
 
 }
