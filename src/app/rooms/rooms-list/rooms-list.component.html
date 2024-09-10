@@ -1,22 +1,24 @@
-<table>
+<div class="container">
+  <table class="table">
     <thead>
-        <tr>
-            <th>Type</th>
-            <th>Price</th>
-            <th>Rating</th>
-            <th>Actions</th>
-        </tr>
+      <tr>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th>Actions</th>
+      </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let room of roomList">
-            <td>{{room.type}}</td>
-            <td>{{room.price}}</td>
-            <td>{{room.rating}}</td>
-            <td>
-                <button [routerLink]="['/room', room.id]">Visit</button>
-                <button (click)="editRoom(room)">Edit</button>
-                <button (click)="removeRoom(room.id)">Delete</button>
-            </td>
-        </tr>
+      <tr *ngFor="let room of roomList">
+        <td>{{ room.type }}</td>
+        <td>{{ room.price }}</td>
+        <td>{{ room.rating }}</td>
+        <td>
+          <button [routerLink]="['/room', room.id]">Visit</button>
+          <button (click)="editRoom(room)">Edit</button>
+          <button (click)="removeRoom(room.id)">Delete</button>
+        </td>
+      </tr>
     </tbody>
-</table>
+  </table>
+</div>
