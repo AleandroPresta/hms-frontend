@@ -1,10 +1,17 @@
 <!--<button (click)="createRoom()">Create</button>-->
 <!-- Sort by dropdown on top right corner -Price low to high -Price high to low -Review-->
 <section class="container">
-    <app-header class="container" [roomTypeOptions]="roomTypeOptions" [priceRangeOptions]="priceRangeOptions"></app-header>
-    <div class="d-flex flex-row w-50">
-        <app-sidebar [roomTypeOptions]="roomTypeOptions" [priceRangeOptions]="priceRangeOptions" class="d-none d-md-block w-100"></app-sidebar>
-        <app-rooms-list [roomList]="roomList"></app-rooms-list>
-    </div>
+  <app-header
+    class="row"
+    [roomTypeOptions]="roomTypeOptions"
+    [priceRangeOptions]="priceRangeOptions"
+  ></app-header>
+  <div class="row container">
+    <app-sidebar
+      [roomTypeOptions]="roomTypeOptions"
+      [priceRangeOptions]="priceRangeOptions"
+      class="col-4 col-xl-3 d-none d-md-block"
+    ></app-sidebar>
+    <app-rooms-list class="col-4" [roomList]="roomList"></app-rooms-list>
+  </div>
 </section>
-

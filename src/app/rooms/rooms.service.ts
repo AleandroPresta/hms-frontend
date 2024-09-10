@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Room } from './Room';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,16 @@ export class RoomsService {
 
   constructor(private http: HttpClient) { }
 
-  BASE_URL = 'http://127.0.0.1:8080/api/v1/room';
+  BASE_URL = 'http://127.0.0.1:8080/api/v1/rooms';
 
-  getRooms() {
-    return this.http.get<Room[]>(`${this.BASE_URL}/all`);
+  getRooms(): Observable<Room[]> {
+    // Manage errpr handling in the component
+    try {
+      return this.http.get<Room[]>(`${this.BASE_URL}/all`);
+    } catch (error) {
+      console.error(error);
+      return new Observable<Room[]>();
+    }
   }
 
   getRoom(id: number) {
