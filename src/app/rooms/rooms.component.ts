@@ -3,7 +3,6 @@ import { RoomsListComponent } from './rooms-list/rooms-list.component';
 import { RoomsService } from './rooms.service';
 import { Room } from './Room';
 import { HeaderComponent } from '../header/header.component';
-import { MdSidebarComponent } from '../md-sidebar/md-sidebar.component';
 import { SidebarComponent } from "../sidebar/sidebar.component";
 import { FilterOptions } from '../filter-options/options';
 
