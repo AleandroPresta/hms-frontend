@@ -3,7 +3,6 @@ import { RoomsListComponent } from './rooms-list/rooms-list.component';
 import { RoomsService } from './rooms.service';
 import { Room } from './Room';
 import { HeaderComponent } from '../header/header.component';
-import { MdSidebarComponent } from '../md-sidebar/md-sidebar.component';
 import { SidebarComponent } from "../sidebar/sidebar.component";
 import { FilterOptions } from '../filter-options/options';
 
@@ -35,6 +34,14 @@ export class RoomsComponent {
     { name: '50€ - 100€', selected: false },
     { name: '100€ - 200€', selected: false },
     { name: 'Over 200€', selected: false },
+  ]
+
+  @Input() ratingOptions: FilterOptions[] = [
+    { name: '1 Star', selected: false },
+    { name: '2 Stars', selected: false },
+    { name: '3 Stars', selected: false },
+    { name: '4 Stars', selected: false },
+    { name: '5 Stars', selected: false },
   ]
 
   ngOnInit() {

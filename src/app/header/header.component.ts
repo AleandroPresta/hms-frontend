@@ -17,4 +17,6 @@ export class HeaderComponent {
 
   @Input() priceRangeOptions: FilterOptions[] = []
 
+  @Input() ratingOptions: FilterOptions[] = []
+
 }
