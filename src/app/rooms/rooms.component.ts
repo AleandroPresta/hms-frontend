@@ -4,11 +4,12 @@ import { RoomsService } from './rooms.service';
 import { Room } from './Room';
 import { HeaderComponent } from '../header/header.component';
 import { MdSidebarComponent } from '../md-sidebar/md-sidebar.component';
+import { SidebarComponent } from "../sidebar/sidebar.component";
 
 @Component({
   selector: 'app-rooms',
   standalone: true,
-  imports: [RoomsListComponent, HeaderComponent, MdSidebarComponent],
+  imports: [RoomsListComponent, HeaderComponent, SidebarComponent],
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.css'
 })

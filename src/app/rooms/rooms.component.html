@@ -1,4 +1,10 @@
 <!--<button (click)="createRoom()">Create</button>-->
 <!-- Sort by dropdown on top right corner -Price low to high -Price high to low -Review-->
-<app-header class="container"></app-header>
-<app-rooms-list [roomList]="roomList"></app-rooms-list>
+<section>
+    <app-header class="container"></app-header>
+    <div class="d-flex flex-row">
+        <app-sidebar class="d-none d-md-block"></app-sidebar>
+        <app-rooms-list [roomList]="roomList"></app-rooms-list>
+    </div>
+</section>
+
