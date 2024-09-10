@@ -15,17 +15,18 @@
     <div id="panelsRoomType" class="accordion-collapse collapse show">
       <div class="accordion-body">
         <ul>
-          <li *ngFor="let option of options">
+          <li *ngFor="let option of roomTypeOptions; let i = index">
             <div class="form-check">
               <input
                 class="form-check-input"
                 type="checkbox"
-                value=""
-                id="roomTypeCheckbox"
-                (change)="filterByType()"
+                [id]="'roomTypeCheckbox' + i"
+                (change)="checkboxClick(i)"
               />
-              <label class="form-check-label" for="roomTypeCheckbox">
-                {{option.name}}
+              <label
+                class="form-check-label"
+              >
+                {{ option.name }}
               </label>
             </div>
           </li>

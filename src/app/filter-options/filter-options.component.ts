@@ -11,7 +11,7 @@ import { NgFor } from '@angular/common';
 })
 export class FilterOptionsComponent {
 
-  options: FilterOptions[] = [
+  roomTypeOptions: FilterOptions[] = [
     { name: 'Single', selected: false },
     { name: 'Double', selected: false },
     { name: 'King', selected: false },
@@ -19,8 +19,10 @@ export class FilterOptionsComponent {
     { name: 'Suite', selected: false },
   ]
 
-  filterByType() {
-    console.log('Filtering by type');
+  checkboxClick(i: number) {
+    // Toggle the option selected state
+    this.roomTypeOptions[i].selected = !this.roomTypeOptions[i].selected
+    console.log(this.roomTypeOptions)
   }
 
 }
