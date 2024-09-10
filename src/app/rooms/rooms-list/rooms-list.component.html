@@ -1,24 +1,41 @@
-<div class="container">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Price</th>
-        <th>Rating</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let room of roomList">
-        <td>{{ room.type }}</td>
-        <td>{{ room.price }}</td>
-        <td>{{ room.rating }}</td>
-        <td>
-          <button [routerLink]="['/room', room.id]">Visit</button>
-          <button (click)="editRoom(room)">Edit</button>
-          <button (click)="removeRoom(room.id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container-fluid">
+    <table class="table table-hover">
+        <caption class="caption-top">
+            List of Rooms
+        </caption>
+        <thead class="table-primary">
+            <tr>
+                <th scope="col">Room No.</th>
+                <th scope="col">Type</th>
+                <th scope="col">Price</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let room of roomList">
+                <th scope="row">{{ room.id }}</th>
+                <td>{{ room.type }}</td>
+                <td>{{ room.price }}</td>
+                <td>{{ room.rating }}</td>
+                <td class="btn-group">
+                    <button
+                        class="btn btn-primary"
+                        [routerLink]="['/room', room.id]"
+                    >
+                        Visit
+                    </button>
+                    <button class="btn btn-primary" (click)="editRoom(room)">
+                        Edit
+                    </button>
+                    <button
+                        class="btn btn-danger"
+                        (click)="removeRoom(room.id)"
+                    >
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

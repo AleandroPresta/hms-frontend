@@ -37,6 +37,14 @@ export class RoomsComponent {
     { name: 'Over 200€', selected: false },
   ]
 
+  @Input() ratingOptions: FilterOptions[] = [
+    { name: '1 Star', selected: false },
+    { name: '2 Stars', selected: false },
+    { name: '3 Stars', selected: false },
+    { name: '4 Stars', selected: false },
+    { name: '5 Stars', selected: false },
+  ]
+
   ngOnInit() {
     console.log('RoomsComponent initialized');
     this.roomsService.getRooms().subscribe(rooms => this.roomList = rooms);
