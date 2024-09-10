@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FilterOptions } from './options';
 import { NgFor } from '@angular/common';
 
@@ -11,18 +11,20 @@ import { NgFor } from '@angular/common';
 })
 export class FilterOptionsComponent {
 
-  roomTypeOptions: FilterOptions[] = [
-    { name: 'Single', selected: false },
-    { name: 'Double', selected: false },
-    { name: 'King', selected: false },
-    { name: 'Queen', selected: false },
-    { name: 'Suite', selected: false },
-  ]
+  @Input() roomTypeOptions: FilterOptions[] = []
 
-  checkboxClick(i: number) {
+  @Input() priceRangeOptions: FilterOptions[] = []
+
+  toggleRoomType(i: number) {
     // Toggle the option selected state
     this.roomTypeOptions[i].selected = !this.roomTypeOptions[i].selected
     console.log(this.roomTypeOptions)
+  }
+
+  togglePriceRange(i: number) {
+    // Toggle the option selected state
+    this.priceRangeOptions[i].selected = !this.priceRangeOptions[i].selected
+    console.log(this.priceRangeOptions)
   }
 
 }

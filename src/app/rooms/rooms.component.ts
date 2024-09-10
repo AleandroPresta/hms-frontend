@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RoomsListComponent } from './rooms-list/rooms-list.component';
 import { RoomsService } from './rooms.service';
 import { Room } from './Room';
 import { HeaderComponent } from '../header/header.component';
 import { MdSidebarComponent } from '../md-sidebar/md-sidebar.component';
 import { SidebarComponent } from "../sidebar/sidebar.component";
+import { FilterOptions } from '../filter-options/options';
 
 @Component({
   selector: 'app-rooms',
@@ -18,6 +19,23 @@ export class RoomsComponent {
   constructor(private roomsService: RoomsService) { }
 
   roomList: Room[] = [];
+
+  @Input() roomTypeOptions: FilterOptions[] = [
+    { name: 'Single', selected: false },
+    { name: 'Double', selected: false },
+    { name: 'King', selected: false },
+    { name: 'Queen', selected: false },
+    { name: 'Suite', selected: false },
+  ]
+
+  @Input() priceRangeOptions: FilterOptions[] = [
+    // Price range options starting from under 25€
+    { name: 'Under 25€', selected: false },
+    { name: '25€ - 50€', selected: false },
+    { name: '50€ - 100€', selected: false },
+    { name: '100€ - 200€', selected: false },
+    { name: 'Over 200€', selected: false },
+  ]
 
   ngOnInit() {
     console.log('RoomsComponent initialized');

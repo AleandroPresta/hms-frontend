@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FilterOptionsComponent } from '../filter-options/filter-options.component';
+import { FilterOptions } from '../filter-options/options';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,5 +12,9 @@ import { FilterOptionsComponent } from '../filter-options/filter-options.compone
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+
+  @Input() roomTypeOptions: FilterOptions[] = []
+
+  @Input() priceRangeOptions: FilterOptions[] = []
 
 }
