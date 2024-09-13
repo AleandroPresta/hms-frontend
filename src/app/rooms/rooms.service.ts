@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Room } from './Room';
 import { Observable } from 'rxjs';
 import { FilterOptions } from '../filter-options/options';
+import { FilterUrlBuilder } from './FilterUrlBuilder';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,17 @@ export class RoomsService {
     try {
       const url = `${this.BASE_URL}/search`;
       const filter = `?pageNo=${pageNo}&pageSize=${pageSize}`;
-      const fullUrl = url + filter;
+      const pagedUrl = url + filter;
 
+      const urlBuilder: FilterUrlBuilder = new FilterUrlBuilder(pagedUrl);
+
+      const fullUrl: string = urlBuilder
+        .addRoomTypeFilter(roomTypeOptions)
+        .addPriceRangeFilter(priceRangeOptions)
+        .addRatingFilter(ratingOptions)
+        .getUrl();
+
+      console.log(`Calling ${fullUrl}`);
       return this.http.get<Room[]>(fullUrl);
     } catch (error) {
       console.error(error);

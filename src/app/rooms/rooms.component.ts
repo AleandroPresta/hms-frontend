@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { RoomsListComponent } from './rooms-list/rooms-list.component';
 import { RoomsService } from './rooms.service';
 import { Room } from './Room';
@@ -15,7 +15,7 @@ import { Page } from './Page';
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.css'
 })
-export class RoomsComponent {
+export class RoomsComponent implements OnInit {
 
   constructor(private roomsService: RoomsService) { }
 
