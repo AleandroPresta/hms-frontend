@@ -5,13 +5,13 @@ import { Room } from './Room';
 import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from "../sidebar/sidebar.component";
 import { FilterOptions } from '../filter-options/options';
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Page } from './Page';
 
 @Component({
   selector: 'app-rooms',
   standalone: true,
-  imports: [RoomsListComponent, HeaderComponent, SidebarComponent, NgFor],
+  imports: [RoomsListComponent, HeaderComponent, SidebarComponent, NgFor, NgClass],
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.css'
 })
@@ -97,6 +97,10 @@ export class RoomsComponent {
     if (currentPageNo > 1) {
       this.changePage(currentPageNo - 1);
     }
+  }
+
+  isCurrentPage(pageNo: number) {
+    return pageNo === this.currentPageNo;
   }
 
 }

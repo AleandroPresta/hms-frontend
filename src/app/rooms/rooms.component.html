@@ -18,14 +18,14 @@
             class="col-12 col-lg-8"
             [roomList]="roomList"
         ></app-rooms-list>
+        <nav aria-label="Page navigation example" class="row">
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" (click)="changeToPreviousPage(currentPageNo)">Previous</a></li>
+                <li class="page-item" *ngFor="let page of pages" [ngClass]="{'active': isCurrentPage(page.pageNo)}">
+                    <a class="page-link" (click)="changePage(page.pageNo)">{{ page.pageNo }}</a>
+                </li>
+                <li class="page-item"><a class="page-link" (click)="changeToNextPage(currentPageNo)">Next</a></li>
+            </ul>
+        </nav>
     </div>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" (click)="changeToPreviousPage(currentPageNo)">Previous</a></li>
-            <li class="page-item" *ngFor="let page of pages">
-                <a class="page-link" (click)="changePage(page.pageNo)">{{ page.pageNo }}</a>
-            </li>
-            <li class="page-item"><a class="page-link" (click)="changeToNextPage(currentPageNo)">Next</a></li>
-        </ul>
-    </nav>
 </section>
