@@ -50,9 +50,7 @@ export class RoomsComponent {
     { name: '5 Stars', selected: false },
   ]
 
-  pages: Page[] = [
-
-  ]
+  pages: Page[] = []
 
   ngOnInit() {
     console.log('RoomsComponent initialized');
