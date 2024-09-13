@@ -20,7 +20,7 @@ export class RoomsComponent {
   constructor(private roomsService: RoomsService) { }
 
   roomList: Room[] = [];
-  pageNo: number = 1;
+  currentPageNo: number = 1;
   pageSize: number = 10;
 
   numTotalPages: number = 0;
@@ -63,7 +63,7 @@ export class RoomsComponent {
       this.pages.push({ pageNo: i, pageSize: this.pageSize });
     }
 
-    this.roomsService.getRooms(this.pageNo, this.pageSize).subscribe(rooms => this.roomList = rooms);
+    this.roomsService.getRooms(this.currentPageNo, this.pageSize).subscribe(rooms => this.roomList = rooms);
   }
 
   createRoom() {
@@ -80,7 +80,7 @@ export class RoomsComponent {
   }
 
   changePage(pageNo: number) {
-    this.pageNo = pageNo;
+    this.currentPageNo = pageNo;
     console.log(`Changing page to ${pageNo} with page size ${this.pageSize}`);
     this.roomsService.getRooms(pageNo, this.pageSize).subscribe(rooms => this.roomList = rooms);
   }
