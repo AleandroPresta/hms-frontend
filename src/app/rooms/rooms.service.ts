@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Room } from './Room';
 import { Observable } from 'rxjs';
+import { FilterOptions } from '../filter-options/options';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,13 @@ export class RoomsService {
 
   BASE_URL = 'http://127.0.0.1:8080/api/v1/rooms';
 
-  getRooms(pageNo: number, pageSize: number): Observable<Room[]> {
+  getRooms(
+    pageNo: number,
+    pageSize: number,
+    roomTypeOptions: FilterOptions[],
+    priceRangeOptions: FilterOptions[],
+    ratingOptions: FilterOptions[]
+  ): Observable<Room[]> {
     // Manage errpr handling in the component
     try {
       const url = `${this.BASE_URL}/search`;

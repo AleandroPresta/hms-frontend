@@ -63,7 +63,13 @@ export class RoomsComponent {
         }
       }
     );
-    this.roomsService.getRooms(this.currentPageNo, this.pageSize).subscribe(rooms => this.roomList = rooms);
+    this.roomsService.getRooms(
+      this.currentPageNo,
+      this.pageSize,
+      this.roomTypeOptions,
+      this.priceRangeOptions,
+      this.ratingOptions
+    ).subscribe(rooms => this.roomList = rooms);
   }
 
   createRoom() {
@@ -82,7 +88,13 @@ export class RoomsComponent {
   changePage(pageNo: number) {
     this.currentPageNo = pageNo;
     console.log(`Changing page to ${pageNo} with page size ${this.pageSize}`);
-    this.roomsService.getRooms(pageNo, this.pageSize).subscribe(rooms => this.roomList = rooms);
+    this.roomsService.getRooms(
+      pageNo,
+      this.pageSize,
+      this.roomTypeOptions,
+      this.priceRangeOptions,
+      this.ratingOptions
+    ).subscribe(rooms => this.roomList = rooms);
   }
 
   changeToNextPage(currentPageNo: number) {
