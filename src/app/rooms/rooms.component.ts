@@ -79,11 +79,24 @@ export class RoomsComponent {
     });
   }
 
-  changePage(pageNo: number, pageSize: number) {
+  changePage(pageNo: number) {
     this.pageNo = pageNo;
-    this.pageSize = pageSize;
-    console.log(`Changing page to ${pageNo} with page size ${pageSize}`);
-    this.roomsService.getRooms(pageNo, pageSize).subscribe(rooms => this.roomList = rooms);
+    console.log(`Changing page to ${pageNo} with page size ${this.pageSize}`);
+    this.roomsService.getRooms(pageNo, this.pageSize).subscribe(rooms => this.roomList = rooms);
+  }
+
+  changeToNextPage(currentPageNo: number) {
+    // Check if there is a next page
+    if (currentPageNo < this.numTotalPages) {
+      this.changePage(currentPageNo + 1);
+    }
+  }
+
+  changeToPreviousPage(currentPageNo: number) {
+    // Check if there is a previous page
+    if (currentPageNo > 1) {
+      this.changePage(currentPageNo - 1);
+    }
   }
 
 }
