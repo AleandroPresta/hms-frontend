@@ -23,7 +23,7 @@ export class RoomsComponent {
   currentPageNo: number = 1;
   pageSize: number = 10;
 
-  numTotalPages: number = 0;
+  numTotalPages: number = 1;
 
   @Input() roomTypeOptions: FilterOptions[] = [
     { name: 'Single', selected: false },
@@ -56,13 +56,15 @@ export class RoomsComponent {
 
   ngOnInit() {
     console.log('RoomsComponent initialized');
-    this.roomsService.getNumPages(this.pageSize).subscribe(numPages => this.numTotalPages = numPages);
-
-    // populate the pages array
-    for (let i = 1; i <= this.numTotalPages; i++) {
-      this.pages.push({ pageNo: i, pageSize: this.pageSize });
-    }
-
+    this.roomsService.getNumPages(this.pageSize).subscribe(
+      numPages => {
+        this.numTotalPages = numPages
+        // Populate the pages array with the total number of pages
+        for (let i = 1; i <= this.numTotalPages; i++) {
+          this.pages.push({ pageNo: i, pageSize: this.pageSize });
+        }
+      }
+    );
     this.roomsService.getRooms(this.currentPageNo, this.pageSize).subscribe(rooms => this.roomList = rooms);
   }
 
