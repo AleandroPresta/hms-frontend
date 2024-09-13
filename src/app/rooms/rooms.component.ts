@@ -5,11 +5,13 @@ import { Room } from './Room';
 import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from "../sidebar/sidebar.component";
 import { FilterOptions } from '../filter-options/options';
+import { NgFor } from '@angular/common';
+import { Page } from './Page';
 
 @Component({
   selector: 'app-rooms',
   standalone: true,
-  imports: [RoomsListComponent, HeaderComponent, SidebarComponent],
+  imports: [RoomsListComponent, HeaderComponent, SidebarComponent, NgFor],
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.css'
 })
@@ -18,6 +20,10 @@ export class RoomsComponent {
   constructor(private roomsService: RoomsService) { }
 
   roomList: Room[] = [];
+  pageNo: number = 1;
+  pageSize: number = 10;
+
+  numTotalPages: number = 0;
 
   @Input() roomTypeOptions: FilterOptions[] = [
     { name: 'Single', selected: false },
@@ -44,9 +50,20 @@ export class RoomsComponent {
     { name: '5 Stars', selected: false },
   ]
 
+  pages: Page[] = [
+
+  ]
+
   ngOnInit() {
     console.log('RoomsComponent initialized');
-    this.roomsService.getRooms().subscribe(rooms => this.roomList = rooms);
+    this.roomsService.getNumPages(this.pageSize).subscribe(numPages => this.numTotalPages = numPages);
+
+    // populate the pages array
+    for (let i = 1; i <= this.numTotalPages; i++) {
+      this.pages.push({ pageNo: i, pageSize: this.pageSize });
+    }
+
+    this.roomsService.getRooms(this.pageNo, this.pageSize).subscribe(rooms => this.roomList = rooms);
   }
 
   createRoom() {
@@ -60,6 +77,13 @@ export class RoomsComponent {
     this.roomsService.postRoom(newRoom).subscribe(room => {
       this.roomList.push(room);
     });
+  }
+
+  changePage(pageNo: number, pageSize: number) {
+    this.pageNo = pageNo;
+    this.pageSize = pageSize;
+    console.log(`Changing page to ${pageNo} with page size ${pageSize}`);
+    this.roomsService.getRooms(pageNo, pageSize).subscribe(rooms => this.roomList = rooms);
   }
 
 }

@@ -12,10 +12,14 @@ export class RoomsService {
 
   BASE_URL = 'http://127.0.0.1:8080/api/v1/rooms';
 
-  getRooms(): Observable<Room[]> {
+  getRooms(pageNo: number, pageSize: number): Observable<Room[]> {
     // Manage errpr handling in the component
     try {
-      return this.http.get<Room[]>(`${this.BASE_URL}/all`);
+      const url = `${this.BASE_URL}/search`;
+      const filter = `?pageNo=${pageNo}&pageSize=${pageSize}`;
+      const fullUrl = url + filter;
+
+      return this.http.get<Room[]>(fullUrl);
     } catch (error) {
       console.error(error);
       return new Observable<Room[]>();
@@ -37,5 +41,9 @@ export class RoomsService {
 
   deleteRoom(id: number) {
     return this.http.delete(`${this.BASE_URL}/${id}/delete`);
+  }
+
+  getNumPages(pageSize: number) {
+    return this.http.get<number>(`${this.BASE_URL}/countPages?pageSize=${pageSize}`);
   }
 }
