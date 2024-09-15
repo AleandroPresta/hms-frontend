@@ -6,10 +6,9 @@ import { FilterOptions } from '../filter-options/options';
 import { FilterUrlBuilder } from './FilterUrlBuilder';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RoomsService {
-
   constructor(private http: HttpClient) { }
 
   BASE_URL = 'http://127.0.0.1:8080/api/v1/rooms';
@@ -53,14 +52,35 @@ export class RoomsService {
 
   putRoom(updatedRoom: Room) {
     const id = updatedRoom.id;
-    return this.http.put<Room>(`${this.BASE_URL}/${id}/update`, updatedRoom);
+    return this.http.put<Room>(
+      `${this.BASE_URL}/${id}/update`,
+      updatedRoom
+    );
   }
 
   deleteRoom(id: number) {
     return this.http.delete(`${this.BASE_URL}/${id}/delete`);
   }
 
-  getNumPages(pageSize: number) {
-    return this.http.get<number>(`${this.BASE_URL}/countPages?pageSize=${pageSize}`);
+  getNumPages(
+    pageSize: number,
+    roomTypeOptions: FilterOptions[],
+    // priceRangeOptions: FilterOptions[],
+    // ratingOptions: FilterOptions[]
+  ) {
+    const url = `${this.BASE_URL}/countPages`;
+    const filter = `?pageSize=${pageSize}`;
+    const pagedUrl = url + filter;
+
+    const urlBuilder: FilterUrlBuilder = new FilterUrlBuilder(pagedUrl);
+
+    const fullUrl: string = urlBuilder
+      .addRoomTypeFilter(roomTypeOptions)
+      //.addPriceRangeFilter(priceRangeOptions)
+      //.addRatingFilter(ratingOptions)
+      .getUrl();
+    return this.http.get<number>(
+      fullUrl
+    );
   }
 }

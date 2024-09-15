@@ -54,7 +54,7 @@ export class RoomsComponent implements OnInit {
 
   ngOnInit() {
     console.log('RoomsComponent initialized');
-    this.roomsService.getNumPages(this.pageSize).subscribe(
+    this.roomsService.getNumPages(this.pageSize, this.roomTypeOptions).subscribe(
       numPages => {
         this.numTotalPages = numPages
         // Populate the pages array with the total number of pages
@@ -116,15 +116,26 @@ export class RoomsComponent implements OnInit {
   }
 
   applyRoomTypeFilters(filterOptions: FilterOptions[]) {
-    console.log('Applying room type filters');
+    // Reset the paged array
+    this.pages = [];
+    // Get the number of pages based on the new filters
+    this.roomsService.getNumPages(this.pageSize, this.roomTypeOptions).subscribe(
+      numPages => {
+        this.numTotalPages = numPages
+        // Populate the pages array with the total number of pages
+        for (let i = 1; i <= this.numTotalPages; i++) {
+          this.pages.push({ pageNo: i, pageSize: this.pageSize });
+        }
+      }
+    );
+    // Get the rooms based on the new filters
     this.roomsService.getRooms(
       this.currentPageNo,
       this.pageSize,
-      filterOptions,
+      this.roomTypeOptions,
       this.priceRangeOptions,
       this.ratingOptions
     ).subscribe(rooms => this.roomList = rooms);
-    console.log(this.roomList);
   }
 
 }
