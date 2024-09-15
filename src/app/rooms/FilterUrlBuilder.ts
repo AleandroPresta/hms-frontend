@@ -20,7 +20,7 @@ export class FilterUrlBuilder {
             .map(option => option.name.toUpperCase())
             .join(',');
         if (selectedRoomTypes) {
-            this.url += `&roomType=${selectedRoomTypes}`;
+            this.url += `&types=${selectedRoomTypes}`;
         }
         return this;
     }

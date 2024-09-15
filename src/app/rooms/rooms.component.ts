@@ -115,4 +115,16 @@ export class RoomsComponent implements OnInit {
     return pageNo === this.currentPageNo;
   }
 
+  applyRoomTypeFilters(filterOptions: FilterOptions[]) {
+    console.log('Applying room type filters');
+    this.roomsService.getRooms(
+      this.currentPageNo,
+      this.pageSize,
+      filterOptions,
+      this.priceRangeOptions,
+      this.ratingOptions
+    ).subscribe(rooms => this.roomList = rooms);
+    console.log(this.roomList);
+  }
+
 }
