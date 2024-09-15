@@ -19,6 +19,8 @@ export class FilterOptionsComponent {
 
   // Output of the filtering process
   @Output() outRoomTypeOptions: EventEmitter<FilterOptions[]> = new EventEmitter<FilterOptions[]>();
+  @Output() outPriceRangeOptions: EventEmitter<FilterOptions[]> = new EventEmitter<FilterOptions[]>();
+  @Output() outRatingOptions: EventEmitter<FilterOptions[]> = new EventEmitter<FilterOptions[]>();
 
   toggleRoomType(i: number) {
     // Toggle the option selected state
@@ -49,8 +51,11 @@ export class FilterOptionsComponent {
     this.ratingOptions.forEach(option => option.selected = false)
   }
 
-  applyRoomTypeFilters() {
+  applyFilters() {
     this.outRoomTypeOptions.emit(this.roomTypeOptions)
+    this.outPriceRangeOptions.emit(this.priceRangeOptions)
+    this.outRatingOptions.emit(this.ratingOptions)
   }
+
 
 }

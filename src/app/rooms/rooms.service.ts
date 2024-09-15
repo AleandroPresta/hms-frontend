@@ -65,8 +65,8 @@ export class RoomsService {
   getNumPages(
     pageSize: number,
     roomTypeOptions: FilterOptions[],
-    // priceRangeOptions: FilterOptions[],
-    // ratingOptions: FilterOptions[]
+    priceRangeOptions: FilterOptions[],
+    ratingOptions: FilterOptions[]
   ) {
     const url = `${this.BASE_URL}/countPages`;
     const filter = `?pageSize=${pageSize}`;
@@ -76,8 +76,8 @@ export class RoomsService {
 
     const fullUrl: string = urlBuilder
       .addRoomTypeFilter(roomTypeOptions)
-      //.addPriceRangeFilter(priceRangeOptions)
-      //.addRatingFilter(ratingOptions)
+      .addPriceRangeFilter(priceRangeOptions)
+      .addRatingFilter(ratingOptions)
       .getUrl();
     return this.http.get<number>(
       fullUrl

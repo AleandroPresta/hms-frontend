@@ -30,7 +30,7 @@ var FilterUrlBuilder = /** @class */ (function () {
             throw new Error('Only one price range can be selected');
         }
         if (selectedPriceRanges[0] === 'Under 25€') {
-            this.url += "&maxPrice=25";
+            this.url += "&minPrice=0&maxPrice=25";
         }
         if (selectedPriceRanges[0] === '25€ - 50€') {
             this.url += "&minPrice=25&maxPrice=50";
