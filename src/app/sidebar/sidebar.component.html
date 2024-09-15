@@ -2,4 +2,5 @@
     [roomTypeOptions]="roomTypeOptions"
     [priceRangeOptions]="priceRangeOptions"
     [ratingOptions]="ratingOptions"
+    (outRoomTypeOptions)="applyRoomTypeFilters($event)"
 ></app-filter-options>

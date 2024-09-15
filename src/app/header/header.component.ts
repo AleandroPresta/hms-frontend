@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MdSidebarComponent } from '../md-sidebar/md-sidebar.component';
 import { FilterOptions } from '../filter-options/options';
 
@@ -18,5 +18,11 @@ export class HeaderComponent {
   @Input() priceRangeOptions: FilterOptions[] = []
 
   @Input() ratingOptions: FilterOptions[] = []
+
+  @Output() outRoomTypeOptions: EventEmitter<FilterOptions[]> = new EventEmitter<FilterOptions[]>();
+
+  applyRoomTypeFilters(filterOptions: FilterOptions[]) {
+    this.outRoomTypeOptions.emit(filterOptions)
+  }
 
 }
