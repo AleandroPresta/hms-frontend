@@ -11,14 +11,27 @@
                     <option value="SUITE">Suite</option>
                 </select>
             </div>
+            <div>
+                <input
+                    type="number"
+                    name="roomPrice"
+                    [(ngModel)]="room.price"
+                    step="0.10"
+                />
+            </div>
+            <div>
+                <input
+                    type="number"
+                    name="roomRating"
+                    [(ngModel)]="room.rating"
+                />
+            </div>
             <div class="container m-1">
                 <div class="row gap-2">
                     <button type="submit" class="col-5 btn btn-primary">
                         Create
                     </button>
-                    <button class="col-5 btn btn-secondary">
-                        Reset
-                    </button>
+                    <button class="col-5 btn btn-secondary">Reset</button>
                 </div>
             </div>
         </form>
