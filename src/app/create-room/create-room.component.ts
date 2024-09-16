@@ -22,13 +22,14 @@ export class CreateRoomComponent {
 
   successMessage: string = '';
 
-  constructor(roomsService: RoomsService) { }
+  constructor(private roomsService: RoomsService) { }
 
   submitForm(roomsForm: NgForm) {
-
-    console.log('Form submitted');
-    console.log(this.room);
-    this.successMessage = 'Room created successfully';
-    roomsForm.reset();
+    this.roomsService.postRoom(this.room).subscribe(
+      (data) => {
+        this.successMessage = 'Room created successfully';
+        roomsForm.reset();
+      }
+    );
   }
 }
