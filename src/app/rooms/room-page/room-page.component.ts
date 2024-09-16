@@ -1,6 +1,6 @@
 import { AsyncPipe, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map, Observable, switchMap } from 'rxjs';
 import { Room } from '../Room';
 import { RoomsService } from '../rooms.service';
@@ -8,7 +8,7 @@ import { RoomsService } from '../rooms.service';
 @Component({
   selector: 'app-room-page',
   standalone: true,
-  imports: [AsyncPipe, NgIf],
+  imports: [AsyncPipe, NgIf, RouterLink],
   templateUrl: './room-page.component.html',
   styleUrl: './room-page.component.css',
 })
