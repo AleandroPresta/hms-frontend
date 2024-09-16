@@ -1,67 +1,95 @@
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Create a new room</h5>
-        <div
-            *ngIf="successMessage !== ''"
-            class="alert alert-success"
-            role="alert"
-        >
-            {{ successMessage }}
-        </div>
-        <form
-            #roomsForm="ngForm"
-            (ngSubmit)="submitForm(roomsForm)"
-            id="newRoomForm"
-        >
-            <div>
-                <select required name="roomType" [(ngModel)]="room.type">
-                    <option value="SINGLE" selected>Single</option>
-                    <option value="DOUBLE">Double</option>
-                    <option value="KING">King</option>
-                    <option value="QUEEN">Queen</option>
-                    <option value="SUITE">Suite</option>
-                </select>
-            </div>
-            <div>
-                <input
-                    required
-                    type="number"
-                    min="1"
-                    name="price"
-                    [(ngModel)]="room.price"
-                    step="0.10"
-                    #price="ngModel"
-                />
-            </div>
-            <div class="alert alert-danger" *ngIf="price.errors?.['min'] && !price.pristine">
-                The price can't be 0 or less
-            </div>
-            <div>
-                <input
-                    required
-                    type="number"
-                    min="1"
-                    max="5"
-                    name="roomRating"
-                    [(ngModel)]="room.rating"
-                    #rating="ngModel"
-                />
-            </div>
-            <div class="alert alert-danger" *ngIf="(rating.errors?.['min'] || rating.errors?.['max'])  && !rating.pristine">
-                The rating must be a number between 1 and 5
-            </div>
-            <div class="container m-1">
-                <div class="row gap-2">
-                    <button
-                        [disabled]="roomsForm.invalid"
-                        type="submit"
-                        class="col-5 btn btn-primary"
+<div
+    class="container card-container d-flex justify-content-center align-items-center"
+>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Create a new room</h5>
+            <form
+                #roomsForm="ngForm"
+                (ngSubmit)="submitForm(roomsForm)"
+                id="newRoomForm"
+            >
+                <div>
+                    <label for="roomTypeInput" class="form-label"
+                        >Room Type:</label
                     >
-                        Create
-                    </button>
-                    <button class="col-5 btn btn-secondary">Reset</button>
+                    <select
+                        required
+                        name="roomType"
+                        [(ngModel)]="room.type"
+                        id="roomTypeInput"
+                        aria-describedby="roomType"
+                    >
+                        <option value="SINGLE" selected>Single</option>
+                        <option value="DOUBLE">Double</option>
+                        <option value="KING">King</option>
+                        <option value="QUEEN">Queen</option>
+                        <option value="SUITE">Suite</option>
+                    </select>
                 </div>
-            </div>
-        </form>
+                <div>
+                    <input
+                        required
+                        type="number"
+                        min="1"
+                        name="price"
+                        [(ngModel)]="room.price"
+                        step="0.10"
+                        #price="ngModel"
+                    />
+                </div>
+                <div
+                    class="alert alert-danger"
+                    *ngIf="price.errors?.['min'] && !price.pristine"
+                >
+                    The price can't be 0 or less
+                </div>
+                <div>
+                    <input
+                        required
+                        type="number"
+                        min="1"
+                        max="5"
+                        name="roomRating"
+                        [(ngModel)]="room.rating"
+                        #rating="ngModel"
+                    />
+                </div>
+                <div
+                    class="alert alert-danger"
+                    *ngIf="(rating.errors?.['min'] || rating.errors?.['max'])  && !rating.pristine"
+                >
+                    The rating must be a number between 1 and 5
+                </div>
+                <div
+                    *ngIf="successMessage !== ''"
+                    class="alert alert-success m-1"
+                    role="alert"
+                >
+                    {{ successMessage }}
+                </div>
+                <div
+                    *ngIf="errorMessage !== ''"
+                    class="alert alert-danger m-1"
+                    role="alert"
+                >
+                    {{ errorMessage }}
+                </div>
+                <div class="container m-1">
+                    <div class="row gap-2">
+                        <button
+                            [disabled]="roomsForm.invalid"
+                            type="submit"
+                            class="col-5 btn btn-primary"
+                        >
+                            Create
+                        </button>
+                        <button type="button" class="col-5 btn btn-secondary">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

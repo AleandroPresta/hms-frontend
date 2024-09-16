@@ -3,6 +3,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Room } from '../rooms/Room';
 import { NgIf } from '@angular/common';
 import { RoomsService } from '../rooms/rooms.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-create-room',
@@ -22,6 +23,8 @@ export class CreateRoomComponent {
 
   successMessage: string = '';
 
+  errorMessage: string = '';
+
   constructor(private roomsService: RoomsService) { }
 
   submitForm(roomsForm: NgForm) {
@@ -29,6 +32,14 @@ export class CreateRoomComponent {
       (data) => {
         this.successMessage = 'Room created successfully';
         roomsForm.reset();
+      },
+      (error) => {
+        // If the server is down
+        if (error.status === 0) {
+          this.errorMessage = 'Server is down, please try again later';
+        } else {
+          this.errorMessage = 'An error occurred, please try again later';
+        }
       }
     );
   }
