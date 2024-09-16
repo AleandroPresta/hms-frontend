@@ -43,4 +43,10 @@ export class CreateRoomComponent {
       }
     );
   }
+
+  resetForm(roomsForm: NgForm) {
+    roomsForm.reset();
+    this.successMessage = '';
+    this.errorMessage = '';
+  }
 }
