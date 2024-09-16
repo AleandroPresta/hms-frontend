@@ -1,7 +1,29 @@
-<p>Room id: {{id$ | async}}</p>
+<!--<p>Room id: {{id$ | async}}</p>
 <div *ngIf="room$ | async as room">
     <p>Room type: {{room.type}}</p>
     <p>Room price: {{room.price}}</p>
     <p>Room rating: {{room.rating}}</p>
     <p>Room available: {{room.available}}</p>
+</div> -->
+
+<div class="container mt-5" *ngIf="room$ | async as room">
+    <div class="card">
+        <div class="card-header">Hotel Room Number {{id$ | async}}</div>
+        <div class="card-body">
+            <p class="card-text">
+                <strong>Room Type:</strong> {{room.type}}
+                <br>
+                <strong>Price:</strong> {{room.price}}
+                <br>
+                <strong>Rating:</strong> {{room.rating}}
+                <br>
+                <strong>Available:</strong> {{room.available}}
+            </p>
+        </div>
+        <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-md-end m-2 gap-2">
+            <button class="btn btn-primary">Book Room</button>
+            <button class="btn btn-secondary">Modfy Room</button>
+            <button class="btn btn-danger">Delete Room</button>
+        </div>
+    </div>
 </div>
