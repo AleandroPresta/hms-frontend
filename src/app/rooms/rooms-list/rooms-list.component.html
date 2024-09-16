@@ -27,7 +27,7 @@
                     >
                         Visit
                     </button>
-                    <button class="btn btn-primary" (click)="editRoom(room)">
+                    <button class="btn btn-primary" [routerLink]="['/room', room.id, 'modify-room']">
                         Edit
                     </button>
                     <button

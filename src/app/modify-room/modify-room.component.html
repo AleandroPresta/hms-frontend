@@ -1,1 +1,112 @@
-<p>modify-room works!</p>
+<div
+    class="container card-container d-flex justify-content-center align-items-center"
+>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Create a new room</h5>
+            <form
+                #roomsForm="ngForm"
+                (ngSubmit)="submitForm(roomsForm)"
+                id="newRoomForm"
+            >
+                <div>
+                    <label for="roomTypeInput" class="form-label"
+                        >Room Type:</label
+                    >
+                    <select
+                        required
+                        name="roomType"
+                        [(ngModel)]="room.type"
+                        id="roomTypeInput"
+                        aria-describedby="roomType"
+                        class="form-select"
+                    >
+                        <option value="SINGLE" selected>Single</option>
+                        <option value="DOUBLE">Double</option>
+                        <option value="KING">King</option>
+                        <option value="QUEEN">Queen</option>
+                        <option value="SUITE">Suite</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="roomPriceInput" class="form-label"
+                        >Room Price:</label
+                    >
+                    <input
+                        required
+                        type="number"
+                        min="1"
+                        name="price"
+                        [(ngModel)]="room.price"
+                        step="0.10"
+                        #price="ngModel"
+                        id="roomPriceInput"
+                        class="form-control"
+                    />
+                </div>
+                <div
+                    class="alert alert-danger my-1"
+                    *ngIf="price.errors?.['min'] && !price.pristine"
+                >
+                    The price can't be 0 or less
+                </div>
+                <div>
+                    <label for="roomRatingInput" class="form-label"
+                        >Room Rating:</label
+                    >
+                    <input
+                        required
+                        type="number"
+                        min="1"
+                        max="5"
+                        name="roomRating"
+                        [(ngModel)]="room.rating"
+                        #rating="ngModel"
+                        id="roomRatingInput"
+                        class="form-control"
+                    />
+                </div>
+                <div
+                    class="alert alert-danger my-1"
+                    *ngIf="(rating.errors?.['min'] || rating.errors?.['max'])  && !rating.pristine"
+                >
+                    The rating must be a number between 1 and 5
+                </div>
+                <div
+                    *ngIf="successMessage !== ''"
+                    class="alert alert-success my-1"
+                    role="alert"
+                >
+                    {{ successMessage }}
+                </div>
+                <div
+                    *ngIf="errorMessage !== ''"
+                    class="alert alert-danger my-1"
+                    role="alert"
+                >
+                    {{ errorMessage }}
+                </div>
+                <div class="container mt-4">
+                    <div class="row d-flex justify-content-center align-items-center gap-4">
+                        <button
+                            [disabled]="roomsForm.invalid"
+                            type="submit"
+                            class="col-5 btn btn-primary"
+                        >
+                            Modify
+                        </button>
+                        <button
+                            type="button"
+                            class="col-5 btn btn-secondary"
+                            (click)="resetForm(roomsForm)"
+                        >
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
