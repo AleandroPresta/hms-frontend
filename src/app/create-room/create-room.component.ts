@@ -1,25 +1,30 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Room } from '../rooms/Room';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-create-room',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './create-room.component.html',
   styleUrl: './create-room.component.css'
 })
 export class CreateRoomComponent {
 
   room: Room = {
-    type: '',
+    type: 'SINGLE',
     price: 0,
     rating: 0,
     available: true
   }
 
-  submitForm() {
+  successMessage: string = '';
+
+  submitForm(roomsForm: NgForm) {
     console.log('Form submitted');
     console.log(this.room);
+    this.successMessage = 'Room created successfully';
+    roomsForm.reset();
   }
 }
