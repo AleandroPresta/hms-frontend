@@ -1,8 +1,12 @@
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Create a new room</h5>
-        <div *ngIf="successMessage !== ''" class="alert alert-success" role="alert">
-            {{successMessage}}
+        <div
+            *ngIf="successMessage !== ''"
+            class="alert alert-success"
+            role="alert"
+        >
+            {{ successMessage }}
         </div>
         <form
             #roomsForm="ngForm"
@@ -23,10 +27,14 @@
                     required
                     type="number"
                     min="1"
-                    name="roomPrice"
+                    name="price"
                     [(ngModel)]="room.price"
                     step="0.10"
+                    #price="ngModel"
                 />
+            </div>
+            <div class="alert alert-danger" *ngIf="price.errors?.['min'] && !price.pristine">
+                The price can't be 0 or less
             </div>
             <div>
                 <input
@@ -36,7 +44,11 @@
                     max="5"
                     name="roomRating"
                     [(ngModel)]="room.rating"
+                    #rating="ngModel"
                 />
+            </div>
+            <div class="alert alert-danger" *ngIf="(rating.errors?.['min'] || rating.errors?.['max'])  && !rating.pristine">
+                The rating must be a number between 1 and 5
             </div>
             <div class="container m-1">
                 <div class="row gap-2">

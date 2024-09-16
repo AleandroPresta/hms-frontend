@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Room } from '../rooms/Room';
 import { NgIf } from '@angular/common';
+import { RoomsService } from '../rooms/rooms.service';
 
 @Component({
   selector: 'app-create-room',
@@ -21,7 +22,10 @@ export class CreateRoomComponent {
 
   successMessage: string = '';
 
+  constructor(roomsService: RoomsService) { }
+
   submitForm(roomsForm: NgForm) {
+
     console.log('Form submitted');
     console.log(this.room);
     this.successMessage = 'Room created successfully';
