@@ -32,7 +32,9 @@
                     <label for="roomPriceInput" class="form-label"
                         >Room Price:</label
                     >
-                    <input
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">€</span>
+                        <input
                         required
                         type="number"
                         min="1"
@@ -42,7 +44,9 @@
                         #price="ngModel"
                         id="roomPriceInput"
                         class="form-control"
+                        aria-describedby="basic-addon1"
                     />
+                    </div>
                 </div>
                 <div
                     class="alert alert-danger my-1"
