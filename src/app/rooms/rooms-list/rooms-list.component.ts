@@ -15,6 +15,8 @@ export class RoomsListComponent {
 
   @Input() roomList: Room[] = [];
 
+  roomIdToDelete: number | undefined;
+
   constructor(private roomsService: RoomsService) { }
 
   editRoom(room: Room) {
@@ -32,11 +34,21 @@ export class RoomsListComponent {
     });
   }
 
+  setRoomToDelete(id: number | undefined) {
+    if (!id) return; // id is undefined
+    this.roomIdToDelete = id;
+    console.log(`Room with id ${id} set to be deleted`);
+  }
+
   removeRoom(id: number | undefined) {
+    console.log(`Room with id ${id} deleted`);
     if (!id) return; // id is undefined
     this.roomsService.deleteRoom(id).subscribe(() => {
+      console.log(`Room with id ${id} deleted`);
       this.roomList = this.roomList.filter(r => r.id !== id);
     });
+    // Reload the page
+    window.location.reload();
   }
 
 }
