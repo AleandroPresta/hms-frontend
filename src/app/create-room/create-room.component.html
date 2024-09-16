@@ -45,7 +45,7 @@
                     />
                 </div>
                 <div
-                    class="alert alert-danger"
+                    class="alert alert-danger my-1"
                     *ngIf="price.errors?.['min'] && !price.pristine"
                 >
                     The price can't be 0 or less
@@ -67,26 +67,26 @@
                     />
                 </div>
                 <div
-                    class="alert alert-danger"
+                    class="alert alert-danger my-1"
                     *ngIf="(rating.errors?.['min'] || rating.errors?.['max'])  && !rating.pristine"
                 >
                     The rating must be a number between 1 and 5
                 </div>
                 <div
                     *ngIf="successMessage !== ''"
-                    class="alert alert-success m-1"
+                    class="alert alert-success my-1"
                     role="alert"
                 >
                     {{ successMessage }}
                 </div>
                 <div
                     *ngIf="errorMessage !== ''"
-                    class="alert alert-danger m-1"
+                    class="alert alert-danger my-1"
                     role="alert"
                 >
                     {{ errorMessage }}
                 </div>
-                <div class="container m-1">
+                <div class="container my-1">
                     <div class="row gap-2">
                         <button
                             [disabled]="roomsForm.invalid"
