@@ -32,6 +32,8 @@
                     <label for="roomPriceInput" class="form-label"
                         >Room Price:</label
                     >
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">€</span>
                     <input
                         required
                         type="number"
@@ -42,7 +44,9 @@
                         #price="ngModel"
                         id="roomPriceInput"
                         class="form-control"
+                        aria-describedby="basic-addon1"
                     />
+                    </div> 
                 </div>
                 <div
                     class="alert alert-danger my-1"
@@ -54,7 +58,11 @@
                     <label for="roomRatingInput" class="form-label"
                         >Room Rating:</label
                     >
-                    <input
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon2"
+                            >★</span
+                        >
+                        <input
                         required
                         type="number"
                         min="1"
@@ -64,7 +72,10 @@
                         #rating="ngModel"
                         id="roomRatingInput"
                         class="form-control"
+                        aria-describedby="basic-addon2"
                     />
+                    </div>
+                    
                 </div>
                 <div
                     class="alert alert-danger my-1"
