@@ -37,6 +37,8 @@ export class RoomsListComponent {
     this.roomsService.deleteRoom(id).subscribe(() => {
       this.roomList = this.roomList.filter(r => r.id !== id);
     });
+    // Reload the page
+    window.location.reload();
   }
 
 }
