@@ -19,6 +19,7 @@
                         [(ngModel)]="room.type"
                         id="roomTypeInput"
                         aria-describedby="roomType"
+                        class="form-select"
                     >
                         <option value="SINGLE" selected>Single</option>
                         <option value="DOUBLE">Double</option>
@@ -28,6 +29,9 @@
                     </select>
                 </div>
                 <div>
+                    <label for="roomPriceInput" class="form-label"
+                        >Room Price:</label
+                    >
                     <input
                         required
                         type="number"
@@ -36,6 +40,8 @@
                         [(ngModel)]="room.price"
                         step="0.10"
                         #price="ngModel"
+                        id="roomPriceInput"
+                        class="form-control"
                     />
                 </div>
                 <div
@@ -45,6 +51,9 @@
                     The price can't be 0 or less
                 </div>
                 <div>
+                    <label for="roomRatingInput" class="form-label"
+                        >Room Rating:</label
+                    >
                     <input
                         required
                         type="number"
@@ -53,6 +62,8 @@
                         name="roomRating"
                         [(ngModel)]="room.rating"
                         #rating="ngModel"
+                        id="roomRatingInput"
+                        class="form-control"
                     />
                 </div>
                 <div
@@ -84,7 +95,11 @@
                         >
                             Create
                         </button>
-                        <button type="button" class="col-5 btn btn-secondary" (click)="resetForm(roomsForm)">
+                        <button
+                            type="button"
+                            class="col-5 btn btn-secondary"
+                            (click)="resetForm(roomsForm)"
+                        >
                             Reset
                         </button>
                     </div>
