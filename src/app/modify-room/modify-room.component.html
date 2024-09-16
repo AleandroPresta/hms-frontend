@@ -33,19 +33,21 @@
                         >Room Price:</label
                     >
                     <div class="input-group">
-                        <span class="input-group-text" id="basic-addon1">€</span>
+                        <span class="input-group-text" id="basic-addon1"
+                            >€</span
+                        >
                         <input
-                        required
-                        type="number"
-                        min="1"
-                        name="price"
-                        [(ngModel)]="room.price"
-                        step="0.10"
-                        #price="ngModel"
-                        id="roomPriceInput"
-                        class="form-control"
-                        aria-describedby="basic-addon1"
-                    />
+                            required
+                            type="number"
+                            min="1"
+                            name="price"
+                            [(ngModel)]="room.price"
+                            step="0.10"
+                            #price="ngModel"
+                            id="roomPriceInput"
+                            class="form-control"
+                            aria-describedby="basic-addon1"
+                        />
                     </div>
                 </div>
                 <div
@@ -58,17 +60,23 @@
                     <label for="roomRatingInput" class="form-label"
                         >Room Rating:</label
                     >
-                    <input
-                        required
-                        type="number"
-                        min="1"
-                        max="5"
-                        name="roomRating"
-                        [(ngModel)]="room.rating"
-                        #rating="ngModel"
-                        id="roomRatingInput"
-                        class="form-control"
-                    />
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon2"
+                            >★</span
+                        >
+                        <input
+                            required
+                            type="number"
+                            min="1"
+                            max="5"
+                            name="roomRating"
+                            [(ngModel)]="room.rating"
+                            #rating="ngModel"
+                            id="roomRatingInput"
+                            class="form-control"
+                            aria-describedby="basic-addon2"
+                        />
+                    </div>
                 </div>
                 <div
                     class="alert alert-danger my-1"
@@ -91,7 +99,9 @@
                     {{ errorMessage }}
                 </div>
                 <div class="container mt-4">
-                    <div class="row d-flex justify-content-center align-items-center gap-4">
+                    <div
+                        class="row d-flex justify-content-center align-items-center gap-4"
+                    >
                         <button
                             [disabled]="roomsForm.invalid"
                             type="submit"
@@ -112,5 +122,3 @@
         </div>
     </div>
 </div>
-
-
