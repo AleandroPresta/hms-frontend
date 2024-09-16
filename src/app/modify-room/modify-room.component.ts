@@ -16,7 +16,12 @@ import { FormsModule, NgForm } from '@angular/forms';
 export class ModifyRoomComponent {
 
   id$: Observable<number>;
-  room$: Observable<Room>;
+  room: Room = {
+    type: 'SINGLE',
+    price: 0,
+    rating: 0,
+    available: true
+  };
 
   successMessage: string = '';
 
@@ -28,15 +33,19 @@ export class ModifyRoomComponent {
       map(params => params['id'])
     )
 
-    this.room$ = this.id$.pipe(
-      switchMap(id => this.roomsService.getRoom(id))
-    )
+    this.id$.subscribe(id => {
+      this.roomsService.getRoom(id).subscribe(
+        (data) => {
+          this.room = data;
+        }
+      );
+    });
   }
 
   submitForm(roomsForm: NgForm) {
-    /*this.roomsService.postRoom(this.room$).subscribe(
+    this.roomsService.putRoom(this.room).subscribe(
       (data) => {
-        this.successMessage = 'Room created successfully';
+        this.successMessage = 'Room updated successfully';
         roomsForm.reset();
       },
       (error) => {
@@ -47,13 +56,13 @@ export class ModifyRoomComponent {
           this.errorMessage = 'An error occurred, please try again later';
         }
       }
-    ); */
+    );
   }
 
   resetForm(roomsForm: NgForm) {
-    /*roomsForm.reset();
+    roomsForm.reset();
     this.successMessage = '';
-    this.errorMessage = ''; */
+    this.errorMessage = '';
   }
 
 }
