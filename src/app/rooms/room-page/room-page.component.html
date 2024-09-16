@@ -1,11 +1,3 @@
-<!--<p>Room id: {{id$ | async}}</p>
-<div *ngIf="room$ | async as room">
-    <p>Room type: {{room.type}}</p>
-    <p>Room price: {{room.price}}</p>
-    <p>Room rating: {{room.rating}}</p>
-    <p>Room available: {{room.available}}</p>
-</div> -->
-
 <div class="container mt-5" *ngIf="room$ | async as room">
     <div class="card">
         <div class="card-header">Hotel Room Number {{id$ | async}}</div>
