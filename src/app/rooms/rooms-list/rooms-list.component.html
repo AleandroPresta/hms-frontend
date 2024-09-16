@@ -1,8 +1,12 @@
 <div class="">
     <div class="d-flex mt-2 justify-content-end">
-        <button class="btn btn-primary" [routerLink]="'/add-room'">Create</button>
+        <button class="btn btn-primary" [routerLink]="'/add-room'">
+            Create
+        </button>
     </div>
-    <table class="table table-hover table-responsive text-center overflow-x-auto mt-2">
+    <table
+        class="table table-hover table-responsive text-center overflow-x-auto mt-2"
+    >
         <thead class="table-primary">
             <tr>
                 <th scope="col">Room No.</th>
@@ -27,12 +31,17 @@
                     >
                         Visit
                     </button>
-                    <button class="btn btn-primary" [routerLink]="['/room', room.id, 'modify-room']">
+                    <button
+                        class="btn btn-primary"
+                        [routerLink]="['/room', room.id, 'modify-room']"
+                    >
                         Edit
                     </button>
                     <button
                         class="btn btn-danger"
-                        (click)="removeRoom(room.id)"
+                        data-bs-toggle="modal"
+                        data-bs-target="#deleteRoomModal"
+                        (click)="setRoomToDelete(room.id)"
                     >
                         Delete
                     </button>
@@ -41,5 +50,41 @@
         </tbody>
     </table>
 </div>
-
-
+<div
+    class="modal fade"
+    id="deleteRoomModal"
+    tabindex="-1"
+    aria-labelledby="deleteRoomModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deleteRoomModalLabel">
+                    Delete confirmation
+                </h1>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this room?
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                >
+                    Close
+                </button>
+                <button type="button" class="btn btn-danger" (click)="removeRoom(roomIdToDelete)">
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
