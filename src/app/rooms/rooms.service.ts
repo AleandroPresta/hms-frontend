@@ -83,4 +83,14 @@ export class RoomsService {
       fullUrl
     );
   }
+
+  bookRoom(room: Room) {
+    room.available = false;
+    return this.putRoom(room);
+  }
+
+  unbookRoom(room: Room) {
+    room.available = true;
+    return this.putRoom(room);
+  }
 }
