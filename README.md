@@ -1,27 +1,21 @@
-# Hms
+## Main Functionalities
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+### Visualizing Rooms in a Table
 
-## Development server
+The application displays a list of rooms in a table format. Each row in the table represents a room and includes details such as room number, type, price, rating, availability, and actions.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Creating New Rooms
 
-## Code scaffolding
+Users can create new rooms by filling out a form with the necessary details such as room type, price, and rating. The form is accessible via the "Create" button.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Modifying Existing Rooms
 
-## Build
+Users can modify the details of existing rooms. This functionality is accessible via the "Modify" button next to each room in the table.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Deleting Rooms
 
-## Running unit tests
+Users can delete rooms by clicking the "Delete" button next to each room in the table. A confirmation modal will appear to confirm the deletion.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Filtering Rooms by Type, Price, and Rating
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The application provides filtering options to filter rooms by type, price range, and rating. Users can select the desired filters to narrow down the list of rooms displayed in the table.
