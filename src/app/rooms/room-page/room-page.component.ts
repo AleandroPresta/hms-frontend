@@ -43,4 +43,15 @@ export class RoomPageComponent {
     window.location.href = '/room';
   }
 
+  bookRoom(room: Room) {
+    this.roomsService.bookRoom(room).subscribe(() => {
+    });
+  }
+
+  unbookRoom(room: Room) {
+    this.roomsService.unbookRoom(room).subscribe(() => {
+    });
+
+  }
+
 }
